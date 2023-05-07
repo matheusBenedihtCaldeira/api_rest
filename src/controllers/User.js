@@ -44,7 +44,7 @@ class UserController {
       const dadosAtualizados = await user.update(req.body);
       return res.json(dadosAtualizados);
     } catch (e) {
-      return res.json(null);
+      return res.status(400).json({ errors: e.errors.map((err) => err.message) });
     }
   }
 }
