@@ -17,7 +17,7 @@ export default class User extends Model {
       email: {
         type: Sequelize.STRING,
         defaultValue: '',
-        validadete: {
+        validate: {
           isEmail: {
             msg: 'E-mail inválido',
           },
@@ -30,10 +30,10 @@ export default class User extends Model {
       password: {
         type: Sequelize.VIRTUAL,
         defaultValue: '',
-        validadete: {
+        validate: {
           len: {
-            args: [10, 50],
-            msg: 'Senha deve ter entre 10 e 50 caracteres',
+            args: [6, 50],
+            msg: 'Senha deve ter entre 6 e 50 caracteres',
           },
         },
       },
