@@ -47,6 +47,26 @@ class UserController {
       return res.status(400).json({ errors: e.errors.map((err) => err.message) });
     }
   }
+
+  async delete(req, res) {
+    try {
+      if (!req.params.id) {
+        return res.status(400).json({
+          errors: ['ID não enviado'],
+        });
+      }
+      const user = await User.findByPk(req.params.id);
+      if (!user) {
+        return res.status(400).json({
+          errors: ['Usuário não encontrado'],
+        });
+      }
+      await user.destroy(req.body);
+      return res.json(user);
+    } catch (e) {
+      return res.status(400).json({ errors: e.errors.map((err) => err.message) });
+    }
+  }
 }
 
 export default new UserController();
