@@ -8,7 +8,7 @@ class AlunoController {
 
   async create(req, res) {
     try {
-      const aluno = Aluno.create(req.body);
+      const aluno = await Aluno.create(req.body);
       return res.json(aluno);
     } catch (e) {
       return res.status(400).json({
@@ -17,7 +17,7 @@ class AlunoController {
     }
   }
 
-  async shows(req, res) {
+  async show(req, res) {
     try {
       const { id } = req.params;
       if (!id) {
@@ -79,7 +79,7 @@ class AlunoController {
           erros: ['Aluno não existe'],
         });
       }
-      const novosDados = aluno.update(req.body);
+      const novosDados = await aluno.update(req.body);
       return res.json(novosDados);
     } catch (e) {
       return res.status(400).json({

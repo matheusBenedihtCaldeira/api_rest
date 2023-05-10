@@ -4,9 +4,9 @@ import loginRequired from '../middlewares/loginRequired';
 
 const router = new Router();
 // Falha de segurança
-// router.get('/', userController.index);
+router.get('/', userController.index);
 router.get('/:id', userController.show);
 router.post('/', userController.create);
-router.put('/', loginRequired, userController.update);
+router.put('/', userController.update);
 router.delete('/', loginRequired, userController.delete);
 export default router;
