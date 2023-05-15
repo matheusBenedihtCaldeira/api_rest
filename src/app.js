@@ -5,11 +5,28 @@ dotenv.config();
 
 import './database';
 import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
 import home from './routes/home';
 import user from './routes/user';
 import token from './routes/token';
 import aluno from './routes/aluno';
 import foto from './routes/foto';
+
+const whiteList = [
+  'https://react2.matheusbenediht.com.br',
+  'http://localhost:8080',
+];
+
+const corsOptions = {
+  origin: (origin, cb) => {
+    if (whiteList.indexOf(origin) !== -1 || !origin) {
+      cb(null, true);
+    } else {
+      cb(new Error('Not allowed by cors!'));
+    }
+  },
+};
 
 class App {
   constructor() {
@@ -19,6 +36,8 @@ class App {
   }
 
   middlewares() {
+    this.app.use(cors(corsOptions));
+    this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(express.static(resolve(__dirname, 'uploads')));
