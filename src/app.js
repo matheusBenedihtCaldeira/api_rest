@@ -14,7 +14,9 @@ import aluno from './routes/aluno';
 import foto from './routes/foto';
 
 const whiteList = [
-  'https://react2.matheusbenediht.com.br',
+  'http://localhost:3001',
+  'http://localhost:3002',
+  'http://localhost:3000',
   'http://localhost:8080',
 ];
 

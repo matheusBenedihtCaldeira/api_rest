@@ -14,7 +14,9 @@ var _aluno = require('./routes/aluno'); var _aluno2 = _interopRequireDefault(_al
 var _foto = require('./routes/foto'); var _foto2 = _interopRequireDefault(_foto);
 
 const whiteList = [
-  'https://react2.matheusbenediht.com.br',
+  'http://localhost:3001',
+  'http://localhost:3002',
+  'http://localhost:3000',
   'http://localhost:8080',
 ];
 
