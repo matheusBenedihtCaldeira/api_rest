@@ -20,7 +20,7 @@ class AlunoController {
       return res.json(aluno);
     } catch (e) {
       return res.status(400).json({
-        erros: e.erros.map((err) => err.message),
+        errors: e.errors.map((err) => err.message),
       });
     }
   }
@@ -30,7 +30,7 @@ class AlunoController {
       const { id } = req.params;
       if (!id) {
         return res.status(400).json({
-          erros: ['Faltando id'],
+          errors: ['Faltando id'],
         });
       }
       const aluno = await _Aluno2.default.findByPk(id, {
@@ -43,13 +43,13 @@ class AlunoController {
       });
       if (!aluno) {
         return res.status(400).json({
-          erros: ['Aluno não existe'],
+          errors: ['Aluno não existe'],
         });
       }
       return res.json(aluno);
     } catch (e) {
       return res.status(400).json({
-        erros: e.erros.map((err) => err.message),
+        errors: e.errors.map((err) => err.message),
       });
     }
   }
@@ -59,13 +59,13 @@ class AlunoController {
       const { id } = req.params;
       if (!id) {
         return res.status(400).json({
-          erros: ['Faltando id'],
+          errors: ['Faltando id'],
         });
       }
       const aluno = await _Aluno2.default.findByPk(id);
       if (!aluno) {
         return res.status(400).json({
-          erros: ['Aluno não existe'],
+          errors: ['Aluno não existe'],
         });
       }
       await aluno.destroy();
@@ -75,7 +75,7 @@ class AlunoController {
       });
     } catch (e) {
       return res.status(400).json({
-        erros: e.erros.map((err) => err.message),
+        errors: e.erros.map((err) => err.message),
       });
     }
   }
@@ -91,14 +91,14 @@ class AlunoController {
       const aluno = await _Aluno2.default.findByPk(id);
       if (!aluno) {
         return res.status(400).json({
-          erros: ['Aluno não existe'],
+          errors: ['Aluno não existe'],
         });
       }
       const novosDados = await aluno.update(req.body);
       return res.json(novosDados);
     } catch (e) {
       return res.status(400).json({
-        erros: e.erros.map((err) => err.message),
+        errors: e.erros.map((err) => err.message),
       });
     }
   }

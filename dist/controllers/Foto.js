@@ -9,7 +9,7 @@ class FotoController {
     return upload(req, res, async (err) => {
       if (err) {
         return res.status(400).json({
-          erros: [err.code],
+          errors: [err.code],
         });
       }
       try {
@@ -19,7 +19,7 @@ class FotoController {
         return res.json(foto);
       } catch (e) {
         return res.status(400).json({
-          erros: ['Aluno não existe'],
+          errors: ['Aluno não existe'],
         });
       }
     });
