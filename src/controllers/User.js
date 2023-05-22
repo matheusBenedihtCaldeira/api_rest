@@ -54,7 +54,7 @@ class UserController {
           errors: ['Usuário não encontrado'],
         });
       }
-      await user.destroy(req.body);
+      await user.destroy();
       return res.json({ status: 'success', message: 'Usuário deletado' });
     } catch (e) {
       return res.status(400).json({ errors: e.errors.map((err) => err.message) });
