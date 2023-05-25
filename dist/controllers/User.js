@@ -32,7 +32,7 @@ class UserController {
 
   async update(req, res) {
     try {
-      const user = await _User2.default.findByPk(req.userId);
+      const user = await _User2.default.findByPk(req.params.id);
       if (!user) {
         return res.status(400).json({
           errors: ['Usuário não encontrado'],
@@ -48,7 +48,7 @@ class UserController {
 
   async delete(req, res) {
     try {
-      const user = await _User2.default.findByPk(req.userId);
+      const user = await _User2.default.findByPk(req.params.id);
       if (!user) {
         return res.status(400).json({
           errors: ['Usuário não encontrado'],

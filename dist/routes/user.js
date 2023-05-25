@@ -7,6 +7,6 @@ const router = new (0, _express.Router)();
 router.get('/', _User2.default.index);
 router.get('/:id', _User2.default.show);
 router.post('/', _User2.default.create);
-router.put('/', _User2.default.update);
+router.put('/:id', _User2.default.update);
 router.delete('/:id', _loginRequired2.default, _User2.default.delete);
 exports. default = router;
